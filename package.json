@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-linkedin-generator",
+  "version": "1.0.0",
+  "description": "Generate portfolio and LinkedIn posts from your GitHub repositories",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "generate:portfolio": "ts-node src/commands/portfolio.ts",
+    "generate:posts": "ts-node src/commands/posts.ts",
+    "generate:all": "ts-node src/commands/all.ts"
+  },
+  "keywords": ["portfolio", "github", "linkedin", "generator"],
+  "author": "jjcambresjal",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  }
+}
