@@ -1,51 +1,76 @@
-export interface Repository {
-  id: number;
+// User types
+export interface User {
+  id: string;
+  username: string;
+  email: string;
+  password_hash: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
+// Portfolio types
+export interface Portfolio {
+  id: string;
+  user_id: string;
+  title: string;
+  description: string;
+  github_username: string;
+  github_token: string;
+  is_public: boolean;
+  view_count: number;
+  created_at: Date;
+  updated_at: Date;
+}
+
+// Project types
+export interface Project {
+  id: string;
+  portfolio_id: string;
   name: string;
-  fullName: string;
-  description: string | null;
+  description: string;
   url: string;
-  language: string | null;
+  language: string;
   stars: number;
   forks: number;
-  openIssues: number;
+  open_issues: number;
   topics: string[];
-  createdAt: string;
-  updatedAt: string;
-  pushedAt: string;
-  featured: boolean;
+  is_featured: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
-export interface RepositoryAnalysis {
-  repo: Repository;
-  technologies: string[];
-  contributors: number;
-  commitCount: number;
-  lastUpdated: Date;
+// Favorite types
+export interface Favorite {
+  id: string;
+  user_id: string;
+  project_id: string;
+  created_at: Date;
 }
 
-export interface LinkedInPost {
-  title: string;
-  description: string;
-  post: string;
-  hashtags: string[];
-  cta: string;
-  repoUrl: string;
+// Comment types
+export interface Comment {
+  id: string;
+  user_id: string;
+  project_id: string;
+  content: string;
+  created_at: Date;
+  updated_at: Date;
 }
 
-export interface Portfolio {
-  title: string;
-  description: string;
-  repositories: RepositoryAnalysis[];
-  generatedAt: Date;
+// Statistic types
+export interface Statistic {
+  id: string;
+  portfolio_id: string;
+  views: number;
+  favorites: number;
+  comments: number;
+  date: Date;
 }
 
-export interface Config {
-  githubUsername: string;
-  githubToken: string;
-  portfolioTitle: string;
-  portfolioDescription: string;
-  portfolioOutput: string;
-  linkedinPostOutput: string;
-  featuredRepos: string[];
-  excludeRepos: string[];
+// API Response types
+export interface ApiResponse<T> {
+  success: boolean;
+  data?: T;
+  error?: string;
+  message?: string;
 }
